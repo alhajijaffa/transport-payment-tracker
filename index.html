@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Transport Payment Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="hero">
+        <div class="hero__content">
+            <span class="badge">Bike Transport Payment Tracker</span>
+            <h1>Track rides, payments, and earnings in one place</h1>
+            <p>Manage bike transport fares, record payments, monitor pending balances, and generate daily reports with a responsive web app.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="panel panel--grid">
+            <div class="panel__card panel__card--summary">
+                <h2>Overview</h2>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <span>Total Rides</span>
+                        <strong id="total-rides">0</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span>Total Paid</span>
+                        <strong id="total-paid">₦0.00</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span>Pending</span>
+                        <strong id="total-pending">₦0.00</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span>Total Revenue</span>
+                        <strong id="total-revenue">₦0.00</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel__card panel__card--form">
+                <div class="card-header">
+                    <h2>Record a Ride Payment</h2>
+                    <button id="clear-all" class="button button--ghost">Clear All</button>
+                </div>
+                <form id="payment-form" class="form-grid">
+                    <label>
+                        Date
+                        <input type="date" id="ride-date" required>
+                    </label>
+
+                        <label>
+                        Name
+                        <input type="name" id="ride-name" required>
+                    </label>
+                        Route
+                        <input type="text" id="ride-route" placeholder="e.g. City Center → Airport" required>
+                    </label>                    <label>
+
+                    <label>
+                        Distance (km)
+                        <input type="number" id="ride-distance" placeholder="e.g. 5" min="0" step="0.1" required>
+                    </label>
+                    <label>
+                        Fare Amount
+                        <div class="input-group">
+                            <span class="input-prefix">₦</span>
+                            <input type="number" id="ride-fare" placeholder="e.g. 500" min="0" step="0.01" required>
+                        </div>
+                    </label>
+                    <label>
+                        Payment Status
+                        <select id="ride-status" required>
+                            <option value="paid">Paid</option>
+                            <option value="pending">Pending</option>
+                        </select>
+                    </label>
+                    <label class="full-width">
+                        Notes
+                        <textarea id="ride-notes" rows="3" placeholder="Optional notes about the ride"></textarea>
+                    </label>
+                    <div class="form-actions full-width">
+                        <button type="submit" class="button button--primary">Save Ride</button>
+                        <button type="button" id="cancel-edit" class="button button--secondary hidden">Cancel Edit</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section class="panel panel--table">
+            <div class="panel__card panel__card--filter">
+                <div class="filter-row">
+                    <label>
+                        Search
+                        <input type="search" id="search-input" placeholder="Search route, notes, status">
+                    </label>
+                    <label>
+                        Status
+                        <select id="status-filter">
+                            <option value="all">All</option>
+                            <option value="paid">Paid</option>
+                            <option value="pending">Pending</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+
+            <div class="panel__card panel__card--table">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Date</th>
+                                <th>Route</th>
+                                <th>Distance</th>
+                                <th>Fare</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            
+                            </tr>
+                        </thead>
+                        <tbody id="ride-list">
+                            <tr class="placeholder-row"><td colspan="6">Add a ride above to start tracking payments.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Built for bike transport payment tracking and earnings management.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
